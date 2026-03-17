@@ -1,218 +1,203 @@
-# 🌌 RAGNAROK NEXUS - WhatsApp RPG Bot
+# 🌌 RAGNAROK NEXUS
 
-**WhatsApp RPG Bot dengan sistem Gacha + Roguelike + Geopolitik + Social Engineering**
+**WhatsApp RPG Bot - Turn-Based Combat & Kingdom Politics**
 
----
-
-## 📋 Fitur MVP
-
-### ✅ Sudah Diimplementasi:
-- **Character Creation System** - 7 pertanyaan psikologis untuk menentukan:
-  - 🧬 Bloodline (12 pilihan)
-  - ⚡ Awakening (16 elemen)
-  - 🎭 Archetype (8 tipe)
-  - 🌟 Fate Mark (passive unik)
-
-- **Stat System** - 7 stat dasar:
-  - VIT, STR, AGI, INT, WIS, CHA, LCK
-
-- **In-Memory Database** - Data tersimpan selama bot aktif:
-  - User profiles & characters
-  - Inventory items
-  - Guilds & members
-  - Kingdoms dengan resources
-  
-  > 📝 **Note:** Untuk production, ganti dengan SQLite/PostgreSQL
-
-- **Commands**:
-  - `!start` / `!register` - Mulai petualangan
-  - `!profile` - Lihat karakter
-  - `!explore` - Jelajahi dunia (random encounters)
-  - `!inventory` - Lihat tas item
-  - `!guild create [nama]` - Buat guild
-  - `!kingdom create [nama]` - Dirikan kingdom
-  - `!help` - Daftar perintah lengkap
-
-- **WhatsApp Integration**:
-  - QR Code login
-  - Button messages untuk navigasi
-  - Auto-reconnect
-  - Message handler system
+> *"Setiap pesan adalah nyawa. Setiap pilihan adalah takdir."*
 
 ---
 
-## 🚀 Cara Install & Menjalankan
+## 🎯 Overview
 
-### Prerequisites:
-- Node.js v16+
-- WhatsApp account (untuk bot)
-- Internet connection
+RAGNAROK NEXUS adalah WhatsApp RPG Bot dengan sistem:
+- **Gacha + Roguelike + Geopolitik + Social Engineering**
+- **9 Shards Mitologi** (Norse, Greek, Hindu, Chinese, Lovecraftian, Steampunk, Biblical, Japanese, Void)
+- **Character Creation Psikologis** (7 pertanyaan menentukan bloodline, awakening, archetype)
+- **Turn-Based Combat** dengan momentum system & environment interaction
+- **Kingdom Politics** (user-driven government, war, diplomacy)
+- **Real-Time Events** (daily rituals, world boss, server-wide threats)
 
-### Langkah Install:
+---
 
+## 🚀 Quick Start
+
+### 1. Install Dependencies
 ```bash
-# 1. Clone/navigate ke folder project
-cd ragnarok-nexus
-
-# 2. Install dependencies
 npm install
+```
 
-# 3. Jalankan bot
+### 2. Configure Bot
+Edit file `.env` dan ganti nomor HP:
+```bash
+nano .env
+```
+
+**PENTING:** Ubah baris ini:
+```env
+PAIRING_PHONE=628123456789  # Ganti dengan nomor HP kamu
+OWNER_NUMBER=628123456789   # Ganti dengan nomor HP kamu
+```
+
+### 3. Jalankan Bot
+```bash
 npm start
 ```
 
-### First Run:
-1. Bot akan menampilkan **QR Code** di terminal
-2. Scan QR dengan WhatsApp (Linked Devices)
-3. Bot siap digunakan!
+### 4. Pairing Code
+Bot akan menampilkan pairing code di terminal. Ikuti instruksi untuk link WhatsApp.
 
 ---
 
-## 📁 Struktur Folder
+## 📱 Commands
+
+### General
+- `!start` - Mulai petualangan (character creation)
+- `!profile` - Lihat karakter kamu
+- `!help` - Daftar semua command
+
+### Adventure
+- `!explore` - Jelajahi dunia (random encounters)
+- `!inventory` - Lihat item yang dimiliki
+
+### Social
+- `!guild create [nama]` - Buat guild
+- `!kingdom create [nama]` - Dirikan kingdom
+
+---
+
+## ⚔️ Combat System
+
+Battle turn-based dengan 7 action types:
+1. ⚔️ **Attack** - Basic attack dengan crit chance
+2. ✨ **Skills** - Gunakan skill sesuai archetype
+3. 🧪 **Items** - Pakai potion/buff
+4. 🛡️ **Defend** - Gain shield, reset momentum
+5. 🔍 **Analyze** - Lihat stats musuh
+6. 🌍 **Environment** - Interaksi dengan environment
+7. 🏃 **Flee** - Kabur dari battle
+
+**Momentum System:** 5 hit berturut tanpa kena damage = OVERDRIVE mode!
+
+---
+
+## 🎭 Character Creation
+
+User menjawab **7 pertanyaan psikologis** yang menentukan:
+- 🧬 **Bloodline** (12 pilihan: Human, Elf Twilight, Dwarf Runeborn, Oni Half-Blood, dll)
+- ⚡ **Awakening** (16 elemen: Fire, Water, Lightning, Void, dll)
+- 🎭 **Archetype** (8 tipe: Warrior, Mage, Rogue, Support, dll)
+- 🌟 **Fate Mark** (passive unik per user)
+
+Stats: VIT, STR, AGI, INT, WIS, CHA, LCK
+
+---
+
+## 🗺️ World Structure
 
 ```
-ragnarok-nexus/
-├── src/
-│   ├── index.js              # Entry point
-│   ├── Bot.js                # Main bot class
-│   ├── database/
-│   │   └── Database.js       # In-memory DB (MVP)
-│   ├── systems/
-│   │   └── CharacterCreator.js  # Character creation logic
-│   └── handlers/
-│       └── CommandHandler.js    # Command processing
-├── data/                     # Untuk SQLite nanti
-├── auth_info/                # WhatsApp session (auto-created)
-├── package.json
-└── README.md
+AETHERMUNDI
+├── 9 Shards (Regional Server)
+│   ├── 3-5 Kingdom per Shard
+│   │   ├── 8-12 Kota per Kingdom
+│   │   └── Dungeon Gates (Rank F → SSS)
+│   └── Hidden Realms
+└── The Void (End-game zone)
 ```
 
-**Note:** MVP menggunakan in-memory database untuk kompatibilitas maksimal. Data akan reset saat bot restart. Untuk production, implementasi SQLite sudah tersedia di blueprint.
+**Server-Wide Threat:** THE UNMAKER memakan batas antar-shard. Kalau semua shard menyatu = Ragnarok Nexus (reset total).
 
 ---
 
-## 🎮 Gameplay Loop (MVP)
+## ⚙️ Configuration
 
-1. **Register** → Jawab 7 pertanyaan → Karakter dibuat
-2. **Explore** → Random encounters (monster/treasure/NPC)
-3. **Collect** → Item masuk inventory
-4. **Social** → Buat guild atau kingdom
-5. **Progress** → Level up, dapat item langka, bangun kingdom
+File: `.env`
 
----
-
-## 🗺️ Roadmap Development
-
-### Phase 1: Foundation ✅ (DONE)
-- [x] Project structure
-- [x] Database schema
-- [x] Character creation
-- [x] Basic commands
-- [x] WhatsApp integration
-
-### Phase 2: Combat System (Next)
-- [ ] Turn-based battle engine
-- [ ] Skill system
-- [ ] Enemy AI
-- [ ] Loot drops
-- [ ] EXP & leveling
-
-### Phase 3: Social Features
-- [ ] Guild management full features
-- [ ] Kingdom politics
-- [ ] Player trading
-- [ ] Chat system
-- [ ] Friend list
-
-### Phase 4: Advanced Systems
-- [ ] Daily rituals (time-based events)
-- [ ] Quest system (dynamic)
-- [ ] Crafting system
-- [ ] Economy & marketplace
-- [ ] Leaderboards
-
-### Phase 5: Endgame & Events
-- [ ] World bosses
-- [ ] Server-wide events
-- [ ] PvP arena
-- [ ] War system
-- [ ] Seasonal content
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `BOT_NAME` | RAGNAROK NEXUS | Nama bot |
+| `OWNER_NUMBER` | '' | Nomor HP owner |
+| `PAIRING_PHONE` | '' | Nomor untuk pairing code |
+| `USE_PAIRING_CODE` | true | Enable pairing code |
+| `DB_TYPE` | memory | Database: memory, sqlite |
+| `LOG_LEVEL` | info | Log level |
 
 ---
 
-## 🔧 Deployment
+## 🛠️ Tech Stack
 
-### Local Development:
+- **Runtime:** Node.js
+- **WhatsApp Lib:** Baileys (@whiskeysockets)
+- **Database:** SQLite (production) / In-memory (MVP)
+- **Scheduler:** node-cron
+- **AI:** Claude API (optional, untuk NPC dialog)
+
+---
+
+## 📦 Deployment
+
+### VPS (PM2)
 ```bash
-npm run dev    # Auto-reload on changes
-npm start      # Normal start
+npm install -g pm2
+pm2 start src/index.js --name ragnarok-bot
+pm2 save
 ```
 
-### Production (VPS/Pterodactyl):
-
-1. Upload semua file ke server
-2. Install dependencies: `npm install --production`
-3. Jalankan dengan PM2:
-   ```bash
-   npm install -g pm2
-   pm2 start src/index.js --name ragnarok-bot
-   pm2 save
-   pm2 startup
-   ```
-
-### Pterodactyl Panel:
+### Pterodactyl Panel
 - Egg: Node.js
 - Startup: `node src/index.js`
-- Port: Tidak perlu (bot WA tidak expose port)
-- Storage: Pastikan persisten untuk `data/` dan `auth_info/`
+- Persistent folder: `auth_info/`
 
 ---
 
-## 📊 Database Schema
+## 🔄 Troubleshooting
 
-### Tables:
-- **users** - Character data & stats
-- **inventory** - Player items
-- **guilds** - Guild information
-- **guild_members** - Guild membership
-- **kingdoms** - Kingdom resources & stats
-- **battles** - Battle history
-- **quests** - Quest progress
+### Pairing code tidak muncul
+1. Pastikan `PAIRING_PHONE` di `.env` sudah benar
+2. Hapus folder `auth_info`: `rm -rf auth_info`
+3. Restart bot: `npm start`
 
----
+### Koneksi terputus (Reason code: 405)
+1. Cek format nomor HP (harus: `628xxxxxxxxx`)
+2. Hapus `auth_info` dan restart
 
-## 🎯 Next Steps (Untuk User)
-
-1. **Test bot** - Jalankan dan scan QR
-2. **Customize** - Edit pertanyaan, bloodline, dll di `CharacterCreator.js`
-3. **Extend** - Tambah command baru di `CommandHandler.js`
-4. **Deploy** - Upload ke VPS atau Pterodactyl panel
+### Bot tidak merespon
+- Pastikan command pakai `!` (contoh: `!start`)
+- User harus register dulu dengan `!start`
 
 ---
 
-## 💡 Tips Development
+## 🎮 Fitur MVP (Phase 1-2)
 
-- Semua file JavaScript menggunakan **CommonJS** (`require/module.exports`)
-- Database auto-create tables saat pertama kali jalan
-- Session WhatsApp tersimpan di `auth_info/` (jangan dihapus kalau mau tetap login)
-- Button message mungkin terbatas di beberapa WhatsApp client (fallback ke text)
+✅ Character Creation (7 pertanyaan psikologis)
+✅ Combat System (turn-based battle)
+✅ Exploration (random encounters)
+✅ Guild System (basic)
+✅ Kingdom System (basic)
+✅ Inventory Management
+✅ Leveling System
+✅ Pairing Code Login
+✅ Config System (.env)
+
+🔜 **Coming Soon (Phase 3+):**
+- Daily Rituals (time-based events)
+- Crafting System (formula discovery)
+- Player Trading (auction house)
+- Kingdom Wars (full politics)
+- AI NPC Dialog (Claude API)
+- Nemesis System
+- Legacy System
 
 ---
 
-## 📞 Support & Contributing
+## 📄 License
 
-Project ini adalah **MVP** dari blueprint Ragnarok Nexus yang lebih besar. 
-
-Fitur yang masih direncanakan:
-- AI integration untuk NPC dialog
-- Real-time events dengan cron scheduler
-- Advanced combat dengan momentum system
-- Full kingdom politics & war system
-- Player economy dengan inflation
-- Dan masih banyak lagi!
+MIT License - Free for personal & commercial use
 
 ---
 
-> **"Setiap pesan adalah nyawa. Setiap pilihan adalah takdir."**
+## 🆘 Support
 
-Developed with ❤️ for the Ragnarok Nexus community.
+Baca **SETUP_GUIDE.md** untuk dokumentasi lengkap setup & troubleshooting.
+
+---
+
+> **"Ragnarok Nexus bukan bot RPG. Ini adalah dunia yang kebetulan berjalan di WhatsApp."** 🌌
